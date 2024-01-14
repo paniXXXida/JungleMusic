@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #008000;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jungle_music.controller.LoginController">
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="270.0" style="-fx-background-color: #008000;" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="101.0" layoutY="285.0" mnemonicParsing="false" onAction="#OnLoginClick" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #FFFF00;" text="Login" />
+            <PasswordField fx:id="passwordField" layoutX="61.0" layoutY="210.0" />
+            <TextField fx:id="usernameField" layoutX="61.0" layoutY="122.0" />
+            <Label alignment="TOP_CENTER" layoutY="21.0" prefHeight="53.0" prefWidth="270.0" text="LOGIN" textAlignment="CENTER">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorMessage" alignment="TOP_CENTER" layoutY="80.0" prefHeight="17.0" prefWidth="270.0" />
+         </children>
+      </AnchorPane>
+   </right>
+   <left>
+      <ImageView fitHeight="432.0" fitWidth="360.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../../../img/2227482222.png" />
+         </image>
+      </ImageView>
+   </left>
+</BorderPane>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jungle_music.controller.DashboardController">
+   <children>
+      <Pane layoutY="-1.0" prefHeight="606.0" prefWidth="700.0" style="-fx-background-color: #008000;">
+         <children>
+            <Label fx:id="welcomeLabel" alignment="TOP_CENTER" layoutY="58.0" prefHeight="36.0" prefWidth="700.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="roleLabel" layoutX="287.0" layoutY="192.0" prefHeight="27.0" prefWidth="237.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateTimeLabel" layoutX="287.0" layoutY="239.0" prefHeight="27.0" prefWidth="237.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="166.0" layoutY="192.0" prefHeight="27.0" prefWidth="111.0" text="Your role is:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="166.0" layoutY="239.0" prefHeight="27.0" prefWidth="111.0" text="It is now:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

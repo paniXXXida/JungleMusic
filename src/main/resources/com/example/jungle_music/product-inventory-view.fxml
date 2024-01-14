@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="700.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jungle_music.controller.ProductInventoryController">
+    <TableView fx:id="tableInventory" layoutX="10.0" layoutY="60.0" onMouseClicked="#rowClicked" prefHeight="450.0" prefWidth="680.0">
+        <columns>
+            <TableColumn fx:id="columnStock" minWidth="30.0" prefWidth="100.0" text="Stock" />
+            <TableColumn fx:id="columnName" minWidth="30.0" prefWidth="100.0" text="Name" />
+            <TableColumn fx:id="columnCategory" minWidth="30.0" prefWidth="100.0" text="Category" />
+            <TableColumn fx:id="columnPrice" minWidth="30.0" prefWidth="100.0" text="Price" />
+            <TableColumn fx:id="columnDescription" minWidth="30.0" prefWidth="280.0" text="Description" />
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+    <Button layoutX="10.0" layoutY="520.0" mnemonicParsing="false" onAction="#onAddClick" prefWidth="100.0" text="Add Product" />
+    <Button layoutX="240.0" layoutY="520.0" mnemonicParsing="false" onAction="#onDeleteClick" prefWidth="120.0" text="Delete Product" />
+    <Button layoutX="125.0" layoutY="520.0" mnemonicParsing="false" onAction="#onEditClick" prefWidth="100.0" text="Edit Product" />
+    <Text layoutX="10.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="justText" text="Product Inventory">
+        <font>
+            <Font size="24.0" />
+        </font>
+    </Text>
+    <TextField fx:id="inputStock" layoutX="10.0" layoutY="561.0" prefWidth="120.0" promptText="Stock" />
+    <TextField fx:id="inputCategory" layoutX="290.0" layoutY="561.0" prefWidth="120.0" promptText="Category" />
+    <TextField fx:id="inputDescription" layoutX="570.0" layoutY="561.0" prefWidth="120.0" promptText="Description" />
+    <TextField fx:id="inputPrice" layoutX="431.0" layoutY="561.0" prefWidth="120.0" promptText="Price" />
+    <TextField fx:id="inputName" layoutX="148.0" layoutY="561.0" prefWidth="120.0" promptText="Name" />
+    <Label fx:id="labelMessage" layoutX="427.0" layoutY="519.0" prefHeight="26.0" prefWidth="257.0" styleClass="messageLabel" />
+</AnchorPane>
