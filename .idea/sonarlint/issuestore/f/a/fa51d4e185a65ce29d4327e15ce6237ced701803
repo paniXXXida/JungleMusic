@@ -1,0 +1,8 @@
+
+X
+java:S1141ß"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8¬ôÒæĞ1
+k	java:S100Ê"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·Îø¼8ƒÍÎæĞ1
+P
+java:S1128"3Remove this unused import 'java.io.BufferedReader'.(€é²Å8´ŸÓæĞ1
+Q
+java:S1128"/Remove this unused import 'java.io.FileReader'.(Â¡¢äşÿÿÿÿ8´ŸÓæĞ1

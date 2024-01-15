@@ -15,17 +15,17 @@
             <Font size="18.0" />
         </font>
     </Text>
-    <Text layoutX="53.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="justText" text="First Name:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="86.0">
+    <Text layoutX="22.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="justText" text="First Name:" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="115.46484375">
         <font>
             <Font size="14.0" />
         </font>
     </Text>
-    <Text layoutX="47.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="justText" text="Last Name:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="116.0" />
-    <Text layoutX="41.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="justText" text="E-mail address:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="146.0" />
+    <Text layoutX="19.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="justText" text="Last Name:" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="146.431640625" />
+    <Text layoutX="19.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="justText" text="E-mail address:" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="86.431640625" />
     <Text layoutX="92.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="justText" text="Phone number:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="176.0" />
-    <TextField fx:id="inputName" layoutX="151.0" layoutY="81.0" promptText="First Name" />
-    <TextField fx:id="inputSurname" layoutX="151.0" layoutY="111.0" promptText="Last name" />
-    <TextField fx:id="inputEmail" layoutX="151.0" layoutY="141.0" promptText="E-mail address" />
+    <TextField fx:id="inputName" layoutX="151.0" layoutY="111.0" promptText="First Name" />
+    <TextField fx:id="inputSurname" layoutX="151.0" layoutY="141.0" promptText="Last name" />
+    <TextField fx:id="inputEmail" layoutX="151.0" layoutY="81.0" promptText="E-mail address" />
     <TextField fx:id="inputPhone" layoutX="151.0" layoutY="172.0" promptText="Phone number" />
     <TableView fx:id="tableProducts" layoutX="10.0" layoutY="275.0" prefHeight="280.0" prefWidth="680.0">
         <columns>

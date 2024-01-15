@@ -1,5 +1,6 @@
 package com.example.jungle_music.database;
 
+import com.example.jungle_music.model.Customer;
 import com.example.jungle_music.model.Order;
 import com.example.jungle_music.model.Product;
 import com.example.jungle_music.model.Role;
@@ -7,6 +8,7 @@ import com.example.jungle_music.model.User;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,12 +18,14 @@ public class Database implements Serializable {
     private final List<Product> products;
     private final List<Order> orders;
 
+
     private static final String DATABASE_FILE = "database.ser";
 
     public Database() {
         users = new ArrayList<>();
         this.products = new ArrayList<>();
         this.orders = new ArrayList<>();
+
 
         // Manager & Sales password
         users.add(new User("Manager", "Rienat", "Zhuravlov", "password1", Role.MANAGER));
@@ -100,6 +104,7 @@ public class Database implements Serializable {
     public List<Order> getOrders() {
         return orders;
     }
+
 
 
 }

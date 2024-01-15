@@ -18,13 +18,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
+import java.nio.file.Path;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class ProductInventoryController implements Initializable, Controller {
     private Database database;
@@ -198,4 +199,44 @@ public class ProductInventoryController implements Initializable, Controller {
         columnDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
     }
 
+    public void OnImportClick(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(stage);
+
+        if (selectedFile != null) {
+            processCSVFile(selectedFile.toPath());
+        }
+    }
+
+    private void processCSVFile(Path file) {
+        try (Scanner scanner = new Scanner(file)) {
+            scanner.nextLine(); // Skip the header line
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] parts = line.split(";");
+
+                if (parts.length == 5) {
+                    try {
+                        String name = parts[0].trim();
+                        String category = parts[1].trim();
+                        double price = Double.parseDouble(parts[2].trim());
+                        String description = parts[3].trim();
+                        int stock = Integer.parseInt(parts[4].trim());
+
+                        Product product = new Product(stock, name, category, price, description);
+                        database.addProduct(product);
+                        observableProducts.add(product);
+                    } catch (NumberFormatException e) {
+                        displayMessage("Error parsing numeric values in the CSV file.");
+                    }
+                }
+            }
+        } catch (IOException e) {
+            displayMessage("Error reading the CSV file.");
+        }
+    }
 }

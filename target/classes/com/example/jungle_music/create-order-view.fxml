@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="700.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jungle_music.controller.CreateOrderController">
+    <Text layoutX="106.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="justText" text="Create Order" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+        <font>
+            <Font size="24.0" />
+        </font>
+    </Text>
+    <Text layoutX="73.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="justText" text="Customer Information" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="52.0">
+        <font>
+            <Font size="18.0" />
+        </font>
+    </Text>
+    <Text layoutX="22.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="justText" text="First Name:" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="115.46484375">
+        <font>
+            <Font size="14.0" />
+        </font>
+    </Text>
+    <Text layoutX="19.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="justText" text="Last Name:" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="146.431640625" />
+    <Text layoutX="19.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="justText" text="E-mail address:" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="86.431640625" />
+    <Text layoutX="92.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="justText" text="Phone number:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="176.0" />
+    <TextField fx:id="inputName" layoutX="151.0" layoutY="111.0" promptText="First Name" />
+    <TextField fx:id="inputSurname" layoutX="151.0" layoutY="141.0" promptText="Last name" />
+    <TextField fx:id="inputEmail" layoutX="151.0" layoutY="81.0" promptText="E-mail address" />
+    <TextField fx:id="inputPhone" layoutX="151.0" layoutY="172.0" promptText="Phone number" />
+    <TableView fx:id="tableProducts" layoutX="10.0" layoutY="275.0" prefHeight="280.0" prefWidth="680.0">
+        <columns>
+            <TableColumn fx:id="columnQuantity" minWidth="32.0" prefWidth="100.0" text="Quantity" />
+            <TableColumn fx:id="columnName" minWidth="32.0" prefWidth="200.0" text="Name" />
+            <TableColumn fx:id="columnCategory" minWidth="30.0" prefWidth="100.0" text="Category" />
+            <TableColumn fx:id="columnPrice" minWidth="30.0" prefWidth="100.0" text="Price" />
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+    <Text layoutX="10.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="justText" text="Products">
+        <font>
+            <Font size="24.0" />
+        </font>
+    </Text>
+    <Button layoutX="10.0" layoutY="565.0" mnemonicParsing="false" onAction="#onAddProductClick" prefWidth="100.0" text="Add Product" />
+    <Button layoutX="120.0" layoutY="565.0" mnemonicParsing="false" onAction="#onDeleteProductClick" prefWidth="120.0" text="Delete Product" />
+    <Button layoutX="250.0" layoutY="565.0" mnemonicParsing="false" onAction="#onCreateOrderClick" prefWidth="110.0" text="Create Order" />
+    <Label fx:id="labelMessage" layoutX="386.0" layoutY="570.0" prefHeight="16.0" prefWidth="300.0" styleClass="messageLabel" />
+</AnchorPane>

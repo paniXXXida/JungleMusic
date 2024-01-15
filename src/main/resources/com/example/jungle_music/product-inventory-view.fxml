@@ -30,5 +30,6 @@
     <TextField fx:id="inputDescription" layoutX="570.0" layoutY="561.0" prefWidth="120.0" promptText="Description" />
     <TextField fx:id="inputPrice" layoutX="431.0" layoutY="561.0" prefWidth="120.0" promptText="Price" />
     <TextField fx:id="inputName" layoutX="148.0" layoutY="561.0" prefWidth="120.0" promptText="Name" />
-    <Label fx:id="labelMessage" layoutX="427.0" layoutY="519.0" prefHeight="26.0" prefWidth="257.0" styleClass="messageLabel" />
+    <Label fx:id="labelMessage" layoutX="506.0" layoutY="519.0" prefHeight="26.0" prefWidth="178.0" styleClass="messageLabel" />
+   <Button fx:id="btnImport" layoutX="376.0" layoutY="521.0" mnemonicParsing="false" onAction="#OnImportClick" prefHeight="26.0" prefWidth="120.0" text="Import Products" />
 </AnchorPane>

@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CreateOrderController implements Initializable, Controller {
+
     @FXML
     private TableView<Product> tableProducts;
     @FXML
@@ -128,6 +129,8 @@ public class CreateOrderController implements Initializable, Controller {
         tableProducts.setItems(FXCollections.observableArrayList());
         labelMessage.setText("");
     }
+
+
 
     private void displayMessage(String message) {
         labelMessage.setText(message);

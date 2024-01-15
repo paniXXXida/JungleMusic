@@ -33,6 +33,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
+            <TableView fx:id="lowStockView" layoutX="127.0" layoutY="288.0" prefHeight="283.0" prefWidth="422.0">
+              <columns>
+                <TableColumn fx:id="columnStock" prefWidth="101.0" text="Stock" />
+                <TableColumn fx:id="columnName" prefWidth="320.0" text="Name" />
+              </columns>
+            </TableView>
          </children>
       </Pane>
    </children>

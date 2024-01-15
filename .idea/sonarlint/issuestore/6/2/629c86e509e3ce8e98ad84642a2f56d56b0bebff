@@ -1,0 +1,12 @@
+
+[	java:S1123"FDefine and throw a dedicated exception instead of using a generic one.(¦¡ãó
+[	java:S112C"FDefine and throw a dedicated exception instead of using a generic one.(ÏšÇÅ
+?	java:S106/"+Replace this use of System.out by a logger.(õê
+E	java:S1061"+Replace this use of System.out by a logger.(¥´î¦úÿÿÿÿ
+E
+java:S1172>"/Remove this unused method parameter "database".(˜Ô‹£
+E	java:S106A"+Replace this use of System.out by a logger.(€şÑ©ûÿÿÿÿ
+f
+java:S1128"DRemove this unused import 'com.example.jungle_music.model.Customer'.(¯»”Óúÿÿÿÿ8–îêèĞ1
+O
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8–îêèĞ1

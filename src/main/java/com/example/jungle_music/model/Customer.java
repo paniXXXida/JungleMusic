@@ -18,4 +18,8 @@ public class Customer implements Serializable {
     public String getName() {
         return name + " " + surname;
     }
+
+
+
+
 }
