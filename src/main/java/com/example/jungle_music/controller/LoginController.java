@@ -37,20 +37,16 @@ public class LoginController {
         String enteredUsername = usernameField.getText();
         String enteredPassword = passwordField.getText();
 
-        // Check if either username or password is empty
         if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
             showError("Please fill both fields");
         } else {
             try {
-                // Attempt to authenticate the user
                 User user = database.authenticateUser(enteredUsername, enteredPassword);
 
-                // If authentication is successful, proceed
                 if (user != null) {
                     createStage(user);
                     closeWindow(event);
                 } else {
-                    // Handle unsuccessful authentication (e.g., show an error message)
                     showError("Invalid username or password");
                 }
             } catch (Exception e) {

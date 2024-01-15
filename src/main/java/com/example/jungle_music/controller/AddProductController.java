@@ -69,24 +69,25 @@ public class AddProductController {
 
     @FXML
     private void onOkClick(ActionEvent event) {
-        try{
+        try {
             Product selection = tableProducts.getSelectionModel().getSelectedItem();
-            if(selection == null){
+
+            if (selection == null) {
                 displayMessage("Please choose a Product");
                 return;
             }
-            if(currentQuantity <= selection.getStock()){
+
+            if (currentQuantity <= selection.getStock()) {
                 Product orderedProduct = new Product(currentQuantity, selection.getName(), selection.getCategory(), selection.getPrice());
                 database.reduceProductStock(selection.getName(), currentQuantity);
                 orderController.getOrderedProduct(orderedProduct);
                 labelMessage.setText("");
                 onCancelClick(event);
-            }
-            else {
+            } else {
                 displayMessage("Out of Stock");
             }
-        }catch (Exception e){
-            displayMessage("Error Occured While Adding Product");
+        } catch (Exception e) {
+            displayMessage("Error occurred while adding product");
         }
     }
 

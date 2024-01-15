@@ -33,14 +33,16 @@ public class DashboardController implements Initializable, Controller {
         displayTime();
     }
 
-    private void displayTime() {
-        dateTimeLabel.setText("It is now: " + setDateTime());
-    }
-
     private String setDateTime() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return LocalDateTime.now().format(formatter);
     }
+
+    private void displayTime() {
+        dateTimeLabel.setText("It is now: " + setDateTime());
+    }
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

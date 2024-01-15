@@ -80,25 +80,24 @@ public class CreateOrderController implements Initializable, Controller {
         String emailAddress = inputEmail.getText();
         String phoneNumber = inputPhone.getText();
         String firstName = inputName.getText();
-        if (firstName.isEmpty() || lastName.isEmpty() || emailAddress.isEmpty() || phoneNumber.isEmpty()){
+
+        if (firstName.isEmpty() || lastName.isEmpty() || emailAddress.isEmpty() || phoneNumber.isEmpty()) {
             displayMessage("Please fill all the fields");
-        }
-        else if (observableProducts.isEmpty()) {
-            displayMessage("Your haven't choosen any products");
-        }
-        else {
-            try{
-                Customer customer = new Customer(firstName,lastName,emailAddress,phoneNumber);
+        } else if (observableProducts.isEmpty()) {
+            displayMessage("You haven't chosen any products");
+        } else {
+            try {
+                Customer customer = new Customer(firstName, lastName, emailAddress, phoneNumber);
                 LocalDateTime now = LocalDateTime.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy");
                 String dateTime = now.format(formatter);
-                Order order = new Order(customer,new ArrayList<>(observableProducts), dateTime);
+                Order order = new Order(customer, new ArrayList<>(observableProducts), dateTime);
 
                 database.addOrder(order);
                 cleanPage();
                 displayMessage("Your order was placed");
-            }catch (Exception ex){
-                displayMessage("Error Occurred While Creating Order");
+            } catch (Exception ex) {
+                displayMessage("Error occurred while creating order");
             }
         }
     }

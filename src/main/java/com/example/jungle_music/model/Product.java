@@ -13,6 +13,12 @@ public class Product implements Serializable {
 
     private double totalPrice;
 
+    public Product(long quantity, String name, String category, double totalPrice){
+        this(0,name,category,0,null);
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+    }
+
     public Product(long stock, String name, String  category, double price, String description){
         this.name = name;
         this.category = category;
@@ -21,11 +27,6 @@ public class Product implements Serializable {
         this.stock = stock;
     }
 
-    public Product(long quantity, String name, String category, double totalPrice){
-        this(0,name,category,0,null);
-        this.quantity = quantity;
-        this.totalPrice = totalPrice;
-    }
 
     public void setName(String name) {
         this.name = name;

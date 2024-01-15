@@ -71,7 +71,6 @@ public class MainController implements Initializable {
     private void loadScene(String fxmlPath, Object data) {
         try {
             FXMLLoader loader = new FXMLLoader(MusicApplication.class.getResource(fxmlPath));
-
             loader.setControllerFactory(controllerClass -> {
                 try {
                     Controller controller = (Controller) controllerClass.getConstructor().newInstance();
@@ -81,9 +80,7 @@ public class MainController implements Initializable {
                     throw new RuntimeException(e);
                 }
             });
-
             layout.setCenter(loader.load());
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

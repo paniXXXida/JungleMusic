@@ -61,7 +61,7 @@ public class ProductInventoryController implements Initializable, Controller {
     public void onAddClick() {
 
         if(inputStock.getText().isEmpty() || columnName.getText().isEmpty() || columnCategory.getText().isEmpty() || columnPrice.getText().isEmpty() || columnDescription.getText().isEmpty()){
-            displayMessage("Please Fill All Fields");
+            displayMessage("Please Fill All The Fields");
         }
         else {
             try {
@@ -77,7 +77,7 @@ public class ProductInventoryController implements Initializable, Controller {
                 clearTextFields();
                 displayMessage("Product has been added Successfully!");
             } catch (NumberFormatException e) {
-                displayMessage("Incorrect input");
+                displayMessage("The input is not correct");
             }
         }
     }
@@ -135,11 +135,11 @@ public class ProductInventoryController implements Initializable, Controller {
                 deleteSelectedProducts();
             } catch (Exception e) {
                 // Display an error message in case of deletion failure
-                displayMessage("Product/s Deletion Failed!");
+                displayMessage("Product/s Deleting Failed!");
             }
         } else {
             // Display a message if no product is selected
-            displayMessage("Please select product");
+            displayMessage("Please select the product");
         }
     }
 
@@ -183,10 +183,10 @@ public class ProductInventoryController implements Initializable, Controller {
     public void rowClicked() {
         Product product = tableInventory.getSelectionModel().getSelectedItem();
         if(product != null){
+            inputPrice.setText(String.valueOf(product.getPrice()));
             inputStock.setText(String.valueOf(product.getStock()));
             inputName.setText(String.valueOf(product.getName()));
             inputCategory.setText(String.valueOf(product.getCategory()));
-            inputPrice.setText(String.valueOf(product.getPrice()));
             inputDescription.setText(String.valueOf(product.getDescription()));
         }
         else {
