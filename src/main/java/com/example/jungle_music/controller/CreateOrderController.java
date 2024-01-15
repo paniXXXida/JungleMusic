@@ -91,7 +91,7 @@ public class CreateOrderController implements Initializable, Controller {
                 LocalDateTime now = LocalDateTime.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy");
                 String dateTime = now.format(formatter);
-                Order order = new Order(customer, new ArrayList<>(observableProducts), dateTime);
+                Order order = new Order(customer,dateTime, new ArrayList<>(observableProducts));
 
                 database.addOrder(order);
                 cleanPage();

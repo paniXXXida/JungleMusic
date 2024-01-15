@@ -131,14 +131,14 @@ public class ProductInventoryController implements Initializable, Controller {
     public void onDeleteClick() {
         if (!tableInventory.getSelectionModel().getSelectedItems().isEmpty()) {
             try {
-                // Extracted the deletion logic into a separate method
+
                 deleteSelectedProducts();
             } catch (Exception e) {
-                // Display an error message in case of deletion failure
+
                 displayMessage("Product/s Deleting Failed!");
             }
         } else {
-            // Display a message if no product is selected
+
             displayMessage("Please select the product");
         }
     }
@@ -154,7 +154,7 @@ public class ProductInventoryController implements Initializable, Controller {
         // Remove products from the observable list
         observableProducts.removeAll(selectedProducts);
 
-        // Display success message and perform additional actions
+
         displayMessage("Product/s Successfully Deleted!");
         clearTextFields();
         tableInventory.getSelectionModel().clearSelection();

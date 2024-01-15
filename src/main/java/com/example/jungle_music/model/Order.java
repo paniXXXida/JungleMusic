@@ -7,14 +7,16 @@ import java.util.List;
 public class Order implements Serializable {
     private final Customer customer;
 
-    private ArrayList<Product> products;
-
     private final String orderDate;
 
-    public Order(Customer customer, ArrayList<Product> products, String orderDate) {
+    private ArrayList<Product> products;
+
+
+    public Order(Customer customer,String orderDate, ArrayList<Product> products) {
         this.customer = customer;
-        this.products = products;
         this.orderDate = orderDate;
+        this.products = products;
+
     }
 
     public void setProducts(ArrayList<Product> products) {
