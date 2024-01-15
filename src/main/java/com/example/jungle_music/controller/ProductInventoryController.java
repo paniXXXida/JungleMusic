@@ -27,6 +27,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ProductInventoryController implements Initializable, Controller {
+    private Database database;
     @FXML
     public TextField inputStock;
     @FXML
@@ -52,42 +53,10 @@ public class ProductInventoryController implements Initializable, Controller {
     @FXML
     private TableColumn<Product, String> columnDescription;
     private ObservableList<Product> observableProducts;
-    private Database database;
+
 
     public void setData(Object data) {
         database = (Database) data;
-    }
-
-    public void onAddClick() {
-
-        if(inputStock.getText().isEmpty() || columnName.getText().isEmpty() || columnCategory.getText().isEmpty() || columnPrice.getText().isEmpty() || columnDescription.getText().isEmpty()){
-            displayMessage("Please Fill All The Fields");
-        }
-        else {
-            try {
-                int stock = Integer.parseInt(inputStock.getText());
-                String productName = inputName.getText();
-                String productCategory = inputCategory.getText();
-                double productPrice = Double.parseDouble(inputPrice.getText());
-                String productDescription = inputDescription.getText();
-
-                Product product = new Product(stock,productName,productCategory,productPrice,productDescription);
-                database.addProduct(product);
-                observableProducts.add(product);
-                clearTextFields();
-                displayMessage("Product has been added Successfully!");
-            } catch (NumberFormatException e) {
-                displayMessage("The input is not correct");
-            }
-        }
-    }
-
-    private void clearTextFields() {
-        inputStock.clear();
-        inputName.clear();
-        inputCategory.clear();
-        inputPrice.clear();
-        inputDescription.clear();
     }
 
     public void onEditClick() {
@@ -119,6 +88,40 @@ public class ProductInventoryController implements Initializable, Controller {
             displayMessage("Product not found");
         }
     }
+    public void onAddClick() {
+        String stockText = inputStock.getText();
+        String name = inputName.getText();
+        String category = inputCategory.getText();
+        String priceText = inputPrice.getText();
+        String description = inputDescription.getText();
+
+        if (stockText.isEmpty() || name.isEmpty() || category.isEmpty() || priceText.isEmpty() || description.isEmpty()) {
+            displayMessage("Please fill all the fields");
+        } else {
+            try {
+                int stock = Integer.parseInt(stockText);
+                double price = Double.parseDouble(priceText);
+
+                Product product = new Product(stock, name, category, price, description);
+                database.addProduct(product);
+                observableProducts.add(product);
+                clearTextFields();
+                displayMessage("Product added successfully!");
+            } catch (NumberFormatException e) {
+                displayMessage("Invalid input format");
+            }
+        }
+    }
+
+    private void clearTextFields() {
+        inputStock.clear();
+        inputName.clear();
+        inputCategory.clear();
+        inputPrice.clear();
+        inputDescription.clear();
+    }
+
+
 
     private boolean isAnyFieldEmpty() {
         return inputStock.getText().isEmpty()
@@ -126,6 +129,29 @@ public class ProductInventoryController implements Initializable, Controller {
                 || inputCategory.getText().isEmpty()
                 || inputPrice.getText().isEmpty()
                 || inputDescription.getText().isEmpty();
+    }
+
+    private void displayMessage(String message) {
+        labelMessage.setText(message);
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(2), event -> labelMessage.setText(""))
+        );
+        timeline.play();
+    }
+
+    public void rowClicked() {
+        Product product = tableInventory.getSelectionModel().getSelectedItem();
+        if(product != null){
+            inputPrice.setText(String.valueOf(product.getPrice()));
+            inputStock.setText(String.valueOf(product.getStock()));
+            inputName.setText(String.valueOf(product.getName()));
+            inputCategory.setText(String.valueOf(product.getCategory()));
+            inputDescription.setText(String.valueOf(product.getDescription()));
+        }
+        else {
+            clearTextFields();
+            displayMessage("There is no products");
+        }
     }
 
     public void onDeleteClick() {
@@ -171,30 +197,5 @@ public class ProductInventoryController implements Initializable, Controller {
         columnPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         columnDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
     }
-
-    private void displayMessage(String message) {
-        labelMessage.setText(message);
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(2), event -> labelMessage.setText(""))
-        );
-        timeline.play();
-    }
-
-    public void rowClicked() {
-        Product product = tableInventory.getSelectionModel().getSelectedItem();
-        if(product != null){
-            inputPrice.setText(String.valueOf(product.getPrice()));
-            inputStock.setText(String.valueOf(product.getStock()));
-            inputName.setText(String.valueOf(product.getName()));
-            inputCategory.setText(String.valueOf(product.getCategory()));
-            inputDescription.setText(String.valueOf(product.getDescription()));
-        }
-        else {
-            clearTextFields();
-            displayMessage("There is no products");
-        }
-    }
-
-
 
 }

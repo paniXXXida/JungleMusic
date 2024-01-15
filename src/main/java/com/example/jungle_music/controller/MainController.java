@@ -18,6 +18,8 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+    private final User user;
+    private final Stage stage;
     @FXML
     private Button btnProductInventory;
     @FXML
@@ -25,8 +27,7 @@ public class MainController implements Initializable {
     @FXML
     private BorderPane layout;
     private final Database database;
-    private final User user;
-    private final Stage stage;
+
     @FXML
     private void onDashBoardClick() {
         loadScene("dashboard-view.fxml", user);

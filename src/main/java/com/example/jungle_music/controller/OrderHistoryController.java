@@ -19,25 +19,25 @@ import java.util.ResourceBundle;
 
 public class OrderHistoryController implements Initializable, Controller {
 
-    //  Orders
+
     @FXML
     private TableView<Order> tableOrders;
     @FXML
-    private TableColumn<Order, String> columnDate;
-    @FXML
     private TableColumn<Order, String> columnCustomerName;
+    @FXML
+    private TableColumn<Order, String> columnDate;
     @FXML
     private TableColumn<Order, Double> columnTotalPrice;
 
-    //  Products
-    @FXML
-    private TableView<Product> tableProducts;
-    @FXML
-    private TableColumn<Product, Integer> columnQuantity;
+
     @FXML
     private TableColumn<Product, String> columnName;
     @FXML
     private TableColumn<Product, String> columnCategory;
+    @FXML
+    private TableView<Product> tableProducts;
+    @FXML
+    private TableColumn<Product, Integer> columnQuantity;
     @FXML
     private TableColumn<Product, Double> columnPrice;
 

@@ -46,6 +46,15 @@ public class AddProductController {
         setTableProducts();
         initializeSpinner();
     }
+
+    private void initializeSpinner() {
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100);
+        valueFactory.setValue(1);
+        inputQuantity.setValueFactory(valueFactory);
+        currentQuantity = inputQuantity.getValue();
+        inputQuantity.valueProperty().addListener((observableValue, integer, t1) -> currentQuantity = inputQuantity.getValue());
+    }
+
     private void setTableProducts() {
         products = database.getProducts();
         observableProducts = FXCollections.observableArrayList(products);
@@ -58,14 +67,13 @@ public class AddProductController {
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
     }
 
-    private void initializeSpinner() {
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100);
-        valueFactory.setValue(1);
-        inputQuantity.setValueFactory(valueFactory);
-        currentQuantity = inputQuantity.getValue();
-        inputQuantity.valueProperty().addListener((observableValue, integer, t1) -> currentQuantity = inputQuantity.getValue());
+    private void displayMessage(String message) {
+        labelMessage.setText(message);
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(2), event -> labelMessage.setText(""))
+        );
+        timeline.play();
     }
-
 
     @FXML
     private void onOkClick(ActionEvent event) {
@@ -95,12 +103,5 @@ public class AddProductController {
     private void onCancelClick(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.close();
-    }
-
-    private void displayMessage(String message) {
-        labelMessage.setText(message);
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(2), event -> labelMessage.setText(""))
-        );
-        timeline.play();
     }}
+

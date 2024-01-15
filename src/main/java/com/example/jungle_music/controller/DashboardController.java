@@ -15,13 +15,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable, Controller {
+
+    private User user;
     @FXML
     private Label welcomeLabel;
     @FXML
     private Label roleLabel;
     @FXML
     private Label dateTimeLabel;
-    private User user;
+
 
     @Override
     public void setData(Object user) {

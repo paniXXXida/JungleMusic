@@ -18,15 +18,17 @@ import java.util.Optional;
 
 public class LoginController {
 
+
+    @FXML
+    private TextField usernameField;
+    private Database database;
     @FXML
     private Label errorMessage;
 
     @FXML
     private PasswordField passwordField;
 
-    @FXML
-    private TextField usernameField;
-    private Database database;
+
 
     public void setDatabase(Database database) {
         this.database = database;
@@ -34,25 +36,26 @@ public class LoginController {
 
     @FXML
     void OnLoginClick(ActionEvent event) throws IOException {
-        String enteredUsername = usernameField.getText();
-        String enteredPassword = passwordField.getText();
+        String enteredUsername = usernameField.getText().trim();
+        String enteredPassword = passwordField.getText().trim();
 
         if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
             showError("Please fill both fields");
-        } else {
-            try {
-                User user = database.authenticateUser(enteredUsername, enteredPassword);
+            return;
+        }
 
-                if (user != null) {
-                    createStage(user);
-                    closeWindow(event);
-                } else {
-                    showError("Invalid username or password");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                showError("An unexpected error occurred. Please try again.");
+        try {
+            User user = database.authenticateUser(enteredUsername, enteredPassword);
+
+            if (user != null) {
+                createStage(user);
+                closeWindow(event);
+            } else {
+                showError("Invalid username or password");
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showError("An unexpected error occurred. Please try again.");
         }
     }
 

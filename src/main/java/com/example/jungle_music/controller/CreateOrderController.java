@@ -26,14 +26,6 @@ import java.util.ResourceBundle;
 
 public class CreateOrderController implements Initializable, Controller {
     @FXML
-    private TableColumn<Product, Integer> columnQuantity;
-    @FXML
-    private TableColumn<Product, String> columnName;
-    @FXML
-    private TableColumn<Product, String> columnCategory;
-    @FXML
-    private TableColumn<Product, Double> columnPrice;
-    @FXML
     private TableView<Product> tableProducts;
     @FXML
     private Label labelMessage;
@@ -47,6 +39,14 @@ public class CreateOrderController implements Initializable, Controller {
     private TextField inputName;
     private final ObservableList<Product> observableProducts = FXCollections.observableArrayList();
     private Database database;
+    @FXML
+    private TableColumn<Product, Integer> columnQuantity;
+    @FXML
+    private TableColumn<Product, String> columnName;
+    @FXML
+    private TableColumn<Product, String> columnCategory;
+    @FXML
+    private TableColumn<Product, Double> columnPrice;
     public void setData(Object database){
         this.database = (Database) database;
     }
@@ -61,6 +61,37 @@ public class CreateOrderController implements Initializable, Controller {
         dialog.setTitle("Add Product");
         dialog.showAndWait();
     }
+
+    @FXML
+    private void onCreateOrderClick() {
+        String firstName = inputName.getText().trim();
+        String lastName = inputSurname.getText().trim();
+        String emailAddress = inputEmail.getText().trim();
+        String phoneNumber = inputPhone.getText().trim();
+
+        if (firstName.isEmpty() || lastName.isEmpty() || emailAddress.isEmpty() || phoneNumber.isEmpty()) {
+            displayMessage("Please fill all the fields");
+            return;
+        }
+
+        if (observableProducts.isEmpty()) {
+            displayMessage("You haven't chosen any products");
+            return;
+        }
+
+        try {
+            Customer customer = new Customer(firstName, lastName, emailAddress, phoneNumber);
+            String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy"));
+            Order order = new Order(customer, dateTime, new ArrayList<>(observableProducts));
+
+            database.addOrder(order);
+            cleanPage();
+            displayMessage("Your order was placed");
+        } catch (Exception ex) {
+            displayMessage("Error occurred while creating order");
+        }
+    }
+
     @FXML
     private void onDeleteProductClick() {
         try {
@@ -71,34 +102,6 @@ public class CreateOrderController implements Initializable, Controller {
             }
         } catch (Exception e){
             displayMessage("Error Occurred While Deleting the Product, Please Try Again");
-        }
-    }
-
-    @FXML
-    private void onCreateOrderClick() {
-        String lastName = inputSurname.getText();
-        String emailAddress = inputEmail.getText();
-        String phoneNumber = inputPhone.getText();
-        String firstName = inputName.getText();
-
-        if (firstName.isEmpty() || lastName.isEmpty() || emailAddress.isEmpty() || phoneNumber.isEmpty()) {
-            displayMessage("Please fill all the fields");
-        } else if (observableProducts.isEmpty()) {
-            displayMessage("You haven't chosen any products");
-        } else {
-            try {
-                Customer customer = new Customer(firstName, lastName, emailAddress, phoneNumber);
-                LocalDateTime now = LocalDateTime.now();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy");
-                String dateTime = now.format(formatter);
-                Order order = new Order(customer,dateTime, new ArrayList<>(observableProducts));
-
-                database.addOrder(order);
-                cleanPage();
-                displayMessage("Your order was placed");
-            } catch (Exception ex) {
-                displayMessage("Error occurred while creating order");
-            }
         }
     }
 
